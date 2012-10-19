@@ -3,6 +3,13 @@
 require 'net/https'
 require 'date'
 
+unless ARGV.length > 0
+    puts "No target specified. DERP."
+    puts "Usage: sslderp <hostname>"
+    exit
+end
+
+
 uri = URI.parse("https://#{ARGV}")
 http = Net::HTTP::new(uri.host,uri.port)
 http.use_ssl = true
@@ -12,7 +19,7 @@ http.start do |h|
 end
 
 today = Date.today
-expiry = Date.parse("#{@cert.not_after}")
 
+expiry = Date.parse("#{@cert.not_after}")
 days = expiry - today
 puts days
