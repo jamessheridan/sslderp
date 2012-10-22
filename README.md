@@ -3,7 +3,8 @@ sslderp
 This is a simple utility to report things about remotely hosted SSL certs.
 
 Presently, it will make a HTTPS connection to a given server and will report
-the number of days remaning until that certificate expires. 
+the number of days remaning until that certificate expires. This is also why
+it is named sslderp, as in - "OH, DERP, MY CERT EXPIRED!"
 
 Example usage:
 sslderp --target www.example.org --nagios

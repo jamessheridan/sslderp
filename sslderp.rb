@@ -33,7 +33,7 @@ begin
     mandatory = [:target]
     missing = mandatory.select{ |param| options[param].nil? }
     if not missing.empty?
-        puts "Specifying a target is necessary. #{missing.join(', ')}"
+        puts "Specifying a target is mandatory."
         puts opt_parser
         exit
     end
@@ -41,7 +41,8 @@ begin
     rescue OptionParser::InvalidOption, OptionParser::MissingArgument
         puts $!.to_s
         puts opt_parser
-        exit
+        exit 3
+
 end
 
 begin
@@ -55,9 +56,9 @@ begin
         @cert = h.peer_cert
     end
 
-    rescue SocketError
+    rescue
         puts $!.to_s
-        exit
+        exit 3
 
 end
 
