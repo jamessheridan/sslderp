@@ -15,7 +15,7 @@ opt_parser = OptionParser.new do |opt|
         options[:verbose] = true
     end
     
-    opt.on("-t", "--target HOSTNAME", "Target SSL domain to check") do |target|
+    opt.on("-t", "--target HOSTNAME/IP[:PORT]", "Target SSL domain to check") do |target|
         options[:target] = target
     end
     opt.on("-n", "--nagios", "Produce nagios compatible output") do
@@ -69,7 +69,7 @@ days = days.truncate
 
 if options[:nagios] == true
     if days < 30
-        if days < 15
+        if days <15
             puts days
             exit 2
         end
